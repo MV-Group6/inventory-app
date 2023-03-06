@@ -1,6 +1,8 @@
 const { db } = require("./server/models");
 const app = require("./server/app");
 
+const changes = true;
+
 const PORT = process.env.PORT || 3000;
 
 const init = async () => {
