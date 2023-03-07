@@ -1,15 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {ItemsList } from './ItemsList';
-import NavBar from './NavBar';
-import '/style.css'
-
-//Importing pages
-import {Home} from './Home';
-import {Mens} from './Mens';
-import {Womens} from './Womens';
-import {Jewel} from './Jewel';
-import {Electronics} from './Electronics';
-import { SingleImg } from './single';
+import { SaucesList } from './SaucesList';
 
 // import and prepend the api url to any fetch calls
 import apiURL from '../api';
@@ -56,10 +46,11 @@ export const App = () => {
 	}
 
 	return (
-		<>
-			<NavBar/>
-			{component}
-		</>
+		<main>	
+      <h1>Sauce Store</h1>
+			<h2>All things 🔥</h2>
+			<SaucesList sauces={sauces} />
+		</main>
 	)
 }
 

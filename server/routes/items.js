@@ -3,6 +3,7 @@ const router = express.Router();
 const { Item } = require("../models/item");
 
 //Express Route to GET all Items
+// GET /sauce
 router.get("/items", async (req, res, next) => {
   try {
     const items = await Item.findAll();
