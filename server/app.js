@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const path = require('path');
 const cors = require('cors');
 
+
 //Allow CORS requests
 app.use(cors());
 // logging middleware
@@ -18,7 +19,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../dist')));
 
 // api router
-app.use('/api', require('./routes'));
+app.use('/api', require('./routes/items'));
 
 // 404 handler
 app.use((req, res) => {
