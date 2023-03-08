@@ -14,15 +14,8 @@ router.get("/items", async (req, res, next) => {
 
 router.post("/items", async (req, res, next) => {
   try {
-    const {title, description, price, category, image} = req.body
-    const newItem = await Item.create({
-      title,
-      description,
-      price,
-      category,
-      image
-    })
-    res.json(newItem)
+    const newItem = await Item.create(req.body)
+    res.status(200).send({newItem})
 } catch (error) {
   console.log(error)
   res.status(500).json({ error: 'Unable to create restaurant'})
