@@ -10,7 +10,24 @@ router.get("/items", async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-});
+})
+
+router.post("/items", async (req, res, next) => {
+  try {
+    const {title, description, price, category, image} = req.body
+    const newItem = await Item.create({
+      title,
+      description,
+      price,
+      category,
+      image
+    })
+    res.json(newItem)
+} catch (error) {
+  console.log(error)
+  res.status(500).json({ error: 'Unable to create restaurant'})
+}
+})
 
 //Express Route to GET one Item
 router.get("/items/:id", async (req, res, next) => {
@@ -20,6 +37,6 @@ router.get("/items/:id", async (req, res, next) => {
     } catch (error) {
       next(error);
     }
-  });
+})
 
 module.exports = router;
