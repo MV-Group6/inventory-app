@@ -9,7 +9,8 @@ import {Mens} from './Mens';
 import {Womens} from './Womens';
 import {Jewel} from './Jewel';
 import {Electronics} from './Electronics';
-import { SingleImg } from './single';
+import { Single } from './single';
+
 
 // import and prepend the api url to any fetch calls
 import apiURL from '../api';
@@ -17,6 +18,7 @@ import apiURL from '../api';
 export const App = () => {
 
 	const [items, setItems] = useState([]);
+	const [single, setSingle] = useState();
 
 	async function fetchItems(){
 		try {
@@ -40,19 +42,37 @@ export const App = () => {
 			component = <Home />
 			break
 		case "/Mens":
-			component = <Mens items={items} />
+			if (!single){
+				component = <Mens items={items} setSingle={setSingle} />
+			}
+			else {
+				component = <Single item={single} setSingle={setSingle}/>
+			}
 			break
 		case "/Womens":
-			component = <Womens items={items}/>
+			if (!single){
+				component = <Womens items={items} setSingle={setSingle}/>
+			}
+			else {
+				component = <Single item={single} setSingle={setSingle}/>
+			}
 			break
 		case "/Jewel":
-			component = <Jewel items={items}/>
+			if (!single){
+				component = <Jewel items={items} setSingle={setSingle}/>
+			}
+			else {
+				component = <Single item={single} setSingle={setSingle}/>
+			}
 			break
 		case "/Electronics":
-			component = <Electronics items={items}/>
+			if (!single){
+				component = <Electronics items={items} setSingle={setSingle}/>
+			}
+			else {
+				component = <Single item={single} setSingle={setSingle}/>
+			}
 			break
-		case "/single":
-			component = <SingleImg items={items}/>
 	}
 
 	return (
@@ -62,6 +82,6 @@ export const App = () => {
 		</>
 	)
 }
-
+// {!single ? {component} : <Single item = {single}/>}
 export default App;
 
