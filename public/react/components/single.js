@@ -1,8 +1,11 @@
 import React from 'react';
 
-export const SingleImg = (props) => {
-
-  return <>
-    <h3>{props.item.title}</h3>
-  </>
-} 
+export function Single (props) {
+    return <>
+        <h1>{props.item.title}</h1>
+        <img src={props.item.image} />
+        <h2>{props.item.description}</h2>
+        <h2>Price : {props.item.price}</h2>
+        <button onClick={() => props.setSingle()}>Back to {props.item.category}</button>
+    </>
+}
