@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 import apiURL from '../api';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 
 export const Home = () => {
@@ -56,8 +58,9 @@ export const Home = () => {
 
     return <>
     <h1>Home</h1>
-    <div>
-      <form>
+        <Popup trigger={<button> Create an Item </button>} position="right center">
+        <div>
+        <form>
         <label>Enter a Product Title you'd like to add:
         <input 
             type="text"
@@ -106,8 +109,10 @@ export const Home = () => {
         <br></br>
         <button onClick={handleSubmit}>Add an item</button>
       </form>
+        </div>
+        </Popup>
+    <div>
       </div>
-
       <div>
       <br></br>
       <br></br>
