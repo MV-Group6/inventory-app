@@ -2,8 +2,6 @@ const express = require("express");
 const router = express.Router();
 const { Item } = require("../models/item");
 
-// GET
-
 //Express Route to GET all Items
 router.get("/items", async (req, res, next) => {
   try {
