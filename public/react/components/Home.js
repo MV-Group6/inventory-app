@@ -113,28 +113,5 @@ export const Home = () => {
         </Popup>
     <div>
       </div>
-      <div>
-      <br></br>
-      <br></br>
-      <button>Remove an item</button>
-      <form >
-        <label>Enter the item you'd like to remove:
-        <input 
-          type="text" 
-        />
-        </label>
-      </form>
-      </div>
-      <br></br>
-      <div>
-      <button>Update an item</button>
-      <form >
-        <label>Enter the item you'd like to update:
-        <input 
-          type="text" 
-        />
-        </label>
-      </form>
-    </div>
     </>
 }
