@@ -7,7 +7,7 @@ import apiURL from '../api';
 export const Account = () => {
     const [loggedIn, setLoggedIn] = useState(false);
     // LOGIN CODE
-	const [inputs, setInputs] = useState({})
+	  const [inputs, setInputs] = useState({})
 
     async function handleChange(event){
       const name = event.target.name;
@@ -82,59 +82,72 @@ export const Account = () => {
 				console.log("User does not exist")
 			}
 		})
+    if (loggedIn) {
+      setLoggedIn(true)
+    }
 	}
+
+  if (loggedIn) {
     return (
-        <>
-            <h1>Login Page</h1>
-            <Popup trigger={<button> Create</button>} position="right center">
-                <form onSubmit={handleSubmit}>
-                        <label>
-                        Username:
-                        <input 
-                        type="text"
-                        name="username"
-                        value={inputs.username || ""}
-                        onChange = {handleChange}/>
-                        </label>
-                        <label>
-                        Password:
-                        <input 
-                        type="text"
-                        name="password"
-                        value={inputs.password || ""}
-                        onChange = {handleChange}
-                        />
-                        </label>
-                        <br></br>
-                        <button onClick={handleSubmit}>Sign Up</button>
-                </form>
-                </Popup >
-                <br></br>
-                <Popup trigger={<button> Log in </button>} position="left center">
-                <form>
-                        <label>
-                        Username:
-                        <input 
-                        type="text"
-                        name="username"
-                        value={inputs.username || ""}
-                        onChange = {handleChange} 
-                        />
-                        </label>
-                        <label>
-                        Password:
-                        <input 
-                        type="text"
-                        name="password"
-                        value={inputs.password ||  ""}
-                        onChange = {handleChange}
-                        />
-                        </label>
-                        <br></br>
-                        <button onClick={handleLogin}>Log in</button>
-                </form>
-                </Popup >
-            
-        </>
-    )
+      <div>
+        <h1>Welcome, {inputs.username}!</h1>
+        <p>You are now logged in.</p>
+      </div>
+    );
+  } else {
+    return (
+      <>
+        <h1>Login Page</h1>
+        <Popup trigger={<button> Create</button>} position="right center">
+          <form onSubmit={handleSubmit}>
+            <label>
+              Username:
+              <input
+                type="text"
+                name="username"
+                value={inputs.username || ""}
+                onChange={handleChange}
+              />
+            </label>
+            <label>
+              Password:
+              <input
+                type="text"
+                name="password"
+                value={inputs.password || ""}
+                onChange={handleChange}
+              />
+            </label>
+            <br />
+            <button onClick={handleSubmit}>Sign Up</button>
+          </form>
+        </Popup>
+        <br />
+        <Popup trigger={<button> Log in </button>} position="left center">
+          <form>
+            <label>
+              Username:
+              <input
+                type="text"
+                name="username"
+                value={inputs.username || ""}
+                onChange={handleChange}
+              />
+            </label>
+            <label>
+              Password:
+              <input
+                type="text"
+                name="password"
+                value={inputs.password || ""}
+                onChange={handleChange}
+              />
+            </label>
+            <br />
+            <button onClick={handleLogin}>Log in</button>
+          </form>
+        </Popup>
+      </>
+    );
+  }
 }
