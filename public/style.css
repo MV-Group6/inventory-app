@@ -7,6 +7,160 @@
   list-style: none;
 }
 
+/*Single pages design*/
+.product-details {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-info {
+  flex: 1 1 60%;
+}
+
+.product-description {
+  margin: 1rem 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+}
+
+.product-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.back-button,
+.delete-button,
+.edit-button {
+  color: white;
+  background-color: #5c6bc0;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.delete-button {
+  background-color: #e53935;
+}
+
+.edit-button {
+  background-color: #43a047;
+}
+
+.back-button:hover,
+.delete-button:hover,
+.edit-button:hover {
+  background-color: #3949ab;
+}
+
+.back-button:active,
+.delete-button:active,
+.edit-button:active {
+  background-color: #1a237e;
+}
+
+
+/*Content pages designs*/
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(to bottom, #354A5F, #4A6474, #657C8A, #8F9E9D);
+}
+
+.product-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  border: 2px solid black;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.product-image {
+  width: 50%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f8f8;
+}
+
+.product-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.product-details {
+  padding: 20px;
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-title {
+  margin-top: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+.product-title h3 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.product-price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f8f8;
+  height: 60px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.product-price h4 {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+}
+
+.product-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.view {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.view:hover {
+  background-color: #0069d9;
+}
+
 /*NavBar design*/
 .logo {
   color: black;

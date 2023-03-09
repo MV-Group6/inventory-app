@@ -78,7 +78,9 @@ export const App = () => {
 	return (
 		<>
 			<NavBar/>
-			{component}
+			<main>
+				{component}
+			</main>
 		</>
 	)
 }
