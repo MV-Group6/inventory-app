@@ -51,62 +51,76 @@ export const Home = () => {
       console.log(inputs);
     }
 
-    return <>
+  return <>
     <h1>Home</h1>
-        <Popup trigger={<button> Create an Item </button>} position="right center">
-        <div>
-        <form>
-        <label>Enter a Product Title you'd like to add:
-        <input 
-            type="text"
-            name="title"
-            value={inputs.title || ""}
-            onChange = {handleChange}
-        />
-        </label>
-
-        <br></br>
-
-        <label>Enter a Product description you'd like to add:
-        <input 
-            type="text"
-            name="description"
-            value={inputs.description || ""}
-            onChange = {handleChange}
-        />
-        </label>
-
-        <br></br>
-
-        <label>Enter a Product Price you'd like to add:
-        <input 
-            type="text" 
-            name="price"
-            value={inputs.price || ""}
-            onChange = {handleChange}
-        />
-        </label>
-
-        <br></br>
-
-        <label>Choose a category (Men's Clothing : 1, Woman's Clothing : 2, Electronics: 3, Jewelry: 4):
-          <input type="string" name='category' value={inputs.category || ""} onChange={handleChange}></input>
-        </label>
-        <br></br>
-        <label>Enter an Image URL you'd like to add:
-        <input 
-            type="text"
-            name="image"
-            value={inputs.image || ""}
-            onChange = {handleChange}
-        />
-        </label>
-        <br></br>
-        <button onClick={handleSubmit}>Add an item</button>
-      </form>
-        </div>
-        </Popup>
-    <div>
+    <div className="card-container">
+      <div className="card">
+        <h2>Men's Clothing</h2>
+        <img src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg" alt="Men's Clothing" />
+        <a href="./Mens">Shop Now</a>
       </div>
-    </>
+      <div className="card">
+        <h2>Women's Clothing</h2>
+        <img src="https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg" alt="Women's Clothing" />
+        <a href="./Womens">Shop Now</a>
+      </div>
+      <div className="card">
+        <h2>Jewelry</h2>
+        <img src="https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg" alt="Jewelry" />
+        <a href="./Jewel">Shop Now</a>
+      </div>
+      <div className="card">
+        <h2>Electronics</h2>
+        <img src="https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg" alt="Electronics" />
+        <a href="./Electronics">Shop Now</a>
+      </div>
+    </div>
+    <Popup trigger={<button> Create an Item </button>} position="right center">
+      <div>
+        <form>
+          <label>Enter a Product Title you'd like to add:
+            <input 
+              type="text"
+              name="title"
+              value={inputs.title || ""}
+              onChange = {handleChange}
+            />
+          </label>
+          <br></br>
+          <label>Enter a Product description you'd like to add:
+            <input 
+              type="text"
+              name="description"
+              value={inputs.description || ""}
+              onChange = {handleChange}
+            />
+          </label>
+          <br></br>
+          <label>Enter a Product Price you'd like to add:
+            <input 
+              type="text" 
+              name="price"
+              value={inputs.price || ""}
+              onChange = {handleChange}
+            />
+          </label>
+          <br></br>
+          <label>Choose a category (Men's Clothing : 1, Woman's Clothing : 2, Electronics: 3, Jewelry: 4):
+            <input type="string" name='category' value={inputs.category || ""} onChange={handleChange}></input>
+          </label>
+          <br></br>
+          <label>Enter an Image URL you'd like to add:
+            <input 
+              type="text"
+              name="image"
+              value={inputs.image || ""}
+              onChange = {handleChange}
+            />
+          </label>
+          <br></br>
+          <button onClick={handleSubmit}>Add an item</button>
+        </form>
+      </div>
+    </Popup>
+  </>
 }
