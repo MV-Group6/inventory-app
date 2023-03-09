@@ -4,9 +4,15 @@ import apiURL from '../api';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
+
 export function Single (props) {
+  
+  
   const [inputs, setInputs] = useState({});
   const [isEditing, setIsEditing] = useState(false); // new state variable
+
+  const loggedIn = window.localStorage.getItem("UserID")
+  console.log(loggedIn, "login")
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -60,6 +66,31 @@ export function Single (props) {
       console.log(error);
     }
   }
+
+  async function handleCart(event){
+    event.preventDefault();
+    try {
+      const itemID= props.item.id;
+      const userID = loggedIn;
+      const res = await fetch(apiURL + "/carts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userID,
+          itemID
+          
+        }),
+      });
+      const data = await res.json();
+      if (res.status === 200) {
+        console.log(data)
+      } else {
+        alert("Something went wrong");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <div className="product-details">
       <div className="product-info">
@@ -68,11 +99,12 @@ export function Single (props) {
           <img src={props.item.image} />
         </div>
         <h2 className="product-description">{props.item.description}</h2>
-        <h2 className="product-price">Price: {props.item.price}</h2>
+        <h2 className="product-price">Price: £{props.item.price}</h2>
         <div className="product-buttons">
           <button className="back-button" onClick={() => props.setSingle()}>
             Back to {props.item.category}
           </button>
+          <button onClick={handleCart} className='view'>Add to Cart</button>
           <button className="delete-button" onClick={handleSubmit}>
             Delete Item? :|
           </button>

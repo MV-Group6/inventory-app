@@ -1,10 +1,12 @@
 import React from 'react';
 import '/style.css';
-
+import { useState } from 'react';
 const NavBar = () => {
+    const [username, setUsername] = useState(window.localStorage.getItem("Username"))
     return (
         <nav>
             <label className='logo'>Shop With Us</label>
+            <label>Welcome</label>
             <ul>
                 <li><a href="./Home">Home</a></li>
                 <li><a href="./Mens">Men's Clothing</a></li>

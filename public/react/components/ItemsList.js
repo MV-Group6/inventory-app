@@ -4,8 +4,8 @@ import { Itemdiv } from './Items';
 export const ItemsList = ({items, setSingle}) => {
 	return <>
 		{
-			items.map((item) => {
-				return <Itemdiv item={item} setSingle={setSingle}/>
+			items.map((item, idx) => {
+				return <Itemdiv item={item} setSingle={setSingle} key ={idx} />
 			})
 		}
 	</>

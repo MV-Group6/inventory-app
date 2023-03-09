@@ -3,6 +3,7 @@ const {items} = require('./seedData.js');
 const {sequelize} = require('./db');
 const {Item} = require('./models/item');
 const {User} = require("./models/User")
+const {Cart} = require("./models/Cart")
 const seed = async () => {
 
     try {
@@ -37,5 +38,22 @@ const user = async () => {
         console.error(error);
     }
 }
+const cart = async () => {
+    try {
+        // drop and recreate tables per model definitions
+        await sequelize.sync({ force: true });
+    
+        // insert data
+        await Cart.create({
+            userID: 100,
+            itemID: 100
+        })
+
+        console.log("Cart Added!");
+    } catch (error) {
+        console.error(error);
+    }
+}
+cart();
 user();
 seed();

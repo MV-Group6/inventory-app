@@ -6,7 +6,7 @@ export const Mens = ({items, setSingle}) => {
         {
             items.map((item, idx) => {
                 if (item.category == "men's clothing") {
-                    return <Itemdiv item={item} setSingle={setSingle} />
+                    return <Itemdiv item={item} setSingle={setSingle} key ={idx} />
                 }
             })
         }

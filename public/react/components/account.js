@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import '/style.css'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import apiURL from '../api';
 
+
 export const Account = () => {
     const [loggedIn, setLoggedIn] = useState(false);
+    const [showthecarts, setShowthecarts] = useState(false);
+    const [allCarts, setAllCarts] = useState([]);
     // LOGIN CODE
 	  const [inputs, setInputs] = useState({})
+
 
     async function handleChange(event){
       const name = event.target.name;
@@ -16,7 +19,7 @@ export const Account = () => {
     }
 
     async function handleSubmit(event){
-      event.preventDefault();
+    event.preventDefault();
 	  const fetchusers = await fetch(apiURL + "/users", {
 		method: "GET",
 		headers: { "Content-Type": "application/json" },
@@ -73,6 +76,8 @@ export const Account = () => {
 				if (user.password == inputs.password){
 					console.log("Logged in!")
 					setLoggedIn(true);
+          window.localStorage.setItem("UserID", user.id)
+          window.localStorage.setItem("Username", user.username)
 				}
 				else {
 					console.log("The password is incorrect!")
@@ -82,16 +87,51 @@ export const Account = () => {
 				console.log("User does not exist")
 			}
 		})
-    if (loggedIn) {
-      setLoggedIn(true)
-    }
 	}
-
-  if (loggedIn) {
+  async function handleLogout(event){
+    event.preventDefault();
+    console.log("event is working")
+    window.localStorage.setItem("Username", "")
+    window.localStorage.setItem("UserID", "")
+    window.location.reload(true);
+  }
+  async function showCart(event) {
+    event.preventDefault();
+    console.log("event is working");
+    const fetchcarts = await fetch(apiURL + "/carts", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+    const allcarts = await fetchcarts.json();
+    const matchingCarts = allcarts.filter((cart) => cart.userID === window.localStorage.getItem("UserID"));
+    const matchingUserIds = matchingCarts.map((cart) => cart.userId);
+    console.log(matchingUserIds);
+  
+    setAllCarts(matchingUserIds);
+  }
+  
+  if (window.localStorage.getItem("Username")!= "" && showthecarts == false) {
     return (
       <div>
         <h1>Welcome, {inputs.username}!</h1>
         <p>You are now logged in.</p>
+        <button onClick={showCart}>Show cart</button>
+        <button onClick={handleLogout}>Log out</button>
+      </div>
+    );
+  }
+  else if (showthecarts){
+    return (
+      <div>
+        <h1>Welcome, {inputs.username}!</h1>
+        <p>You are now logged in.</p>
+        <button onClick={showCart}>Show cart</button>
+        {allCarts.map((cart) => (
+        <div key={cart.id}>
+          {/* render each cart item here */}
+        </div>
+        ))}
+        <button onClick={handleLogout}>Log out</button>
       </div>
     );
   } else {
@@ -146,7 +186,8 @@ export const Account = () => {
             <br />
             <button onClick={handleLogin}>Log in</button>
           </form>
-        </Popup>
+          </Popup>
+        <br></br>
       </>
     );
   }
