@@ -4,7 +4,7 @@ import '/style.css';
 const NavBar = () => {
     return (
         <nav>
-            <label class='logo'>Shop With Us</label>
+            <label className='logo'>Shop With Us</label>
             <ul>
                 <li><a href="./Home">Home</a></li>
                 <li><a href="./Mens">Men's Clothing</a></li>
