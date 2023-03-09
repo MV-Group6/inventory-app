@@ -7,6 +7,13 @@
   list-style: none;
 }
 
+.cart {
+  border: 2px solid black;
+  border-radius: 10px;
+  height: 500px;
+  width: 1200px;
+}
+
 /*Home page cards*/
 .card-container {
   display: flex;
@@ -298,11 +305,15 @@ main {
 }
 
 /*NavBar design*/
+.helloUser {
+  font-size: 20px;
+}
+
 .logo {
   color: black;
   font-size: 45px;
   line-height: 90px;
-  padding: 0 100px;
+  padding: 0 20px;
   font-weight: bold;
 }
 

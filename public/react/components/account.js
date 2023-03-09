@@ -155,15 +155,16 @@ export const Account = () => {
         <p>You are now logged in.</p>
         <button onClick={showCart}>Show cart</button>
         <p>Cart displayed here</p>
-        {carttitles.map((item) => (
-        <>
-        <p key={item.id}>
-          {item}
-        </p>          
-        </>
-        
-        ))}
-        <h1>Total price for cart is : £{totalprice}</h1>
+        <section className='cart'>
+          {carttitles.map((item) => (
+          <>
+          <p key={item.id}>
+            {item}
+          </p>          
+          </>
+          ))}
+        </section>
+        <h2>Total price for cart is : £{totalprice}</h2>
         <button onClick={handleLogout}>Log out</button>
       </div>
     );
