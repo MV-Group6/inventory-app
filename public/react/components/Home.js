@@ -51,11 +51,6 @@ export const Home = () => {
       console.log(inputs);
     }
 
-    async function signUpHandler(e) {
-      e.preventDefault();
-      
-    }
-
     return <>
     <h1>Home</h1>
         <Popup trigger={<button> Create an Item </button>} position="right center">

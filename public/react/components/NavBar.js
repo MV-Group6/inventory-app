@@ -4,13 +4,14 @@ import '/style.css';
 const NavBar = () => {
     return (
         <nav>
-            <label class='logo'>Shop With Us</label>
+            <label className='logo'>Shop With Us</label>
             <ul>
                 <li><a href="./Home">Home</a></li>
                 <li><a href="./Mens">Men's Clothing</a></li>
                 <li><a href="./Womens">Women's Clothing</a></li>
                 <li><a href="./Jewel">Jewelry</a></li>
                 <li><a href="./Electronics">Electronics</a></li>
+                <li><a href="./account">Account</a></li>
             </ul>
         </nav>
     );

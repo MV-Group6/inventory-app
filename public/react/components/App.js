@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import {ItemsList } from './ItemsList';
 import NavBar from './NavBar';
 import '/style.css'
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 //Importing pages
 import {Home} from './Home';
@@ -14,9 +16,10 @@ import { Single } from './single';
 
 // import and prepend the api url to any fetch calls
 import apiURL from '../api';
+import { Account } from './account';
+
 
 export const App = () => {
-
 	const [items, setItems] = useState([]);
 	const [single, setSingle] = useState();
 
@@ -36,7 +39,7 @@ export const App = () => {
 	}, []);
 
 	//Front end dev
-	let component
+	let component = <Home />;
 	switch (window.location.pathname) {
 		case "/Home":
 			component = <Home />
@@ -73,17 +76,23 @@ export const App = () => {
 				component = <Single item={single} setSingle={setSingle}/>
 			}
 			break
+		case "/account":
+				component = <Account />
+			break
 	}
 
+
 	return (
-		<>
-			<NavBar/>
-			<main>
-				{component}
-			</main>
-		</>
-	)
-}
-// {!single ? {component} : <Single item = {single}/>}
+			<>
+			<NavBar />
+				<main>
+					{component}
+				</main>
+				
+			</>
+		)
+		
+	}
+
 export default App;
 
