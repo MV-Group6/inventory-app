@@ -16,10 +16,10 @@ import { Single } from './single';
 
 // import and prepend the api url to any fetch calls
 import apiURL from '../api';
+import { Account } from './account';
 
 
 export const App = () => {
-
 	const [items, setItems] = useState([]);
 	const [single, setSingle] = useState();
 
@@ -39,7 +39,7 @@ export const App = () => {
 	}, []);
 
 	//Front end dev
-	let component
+	let component = <Home />;
 	switch (window.location.pathname) {
 		case "/Home":
 			component = <Home />
@@ -76,119 +76,23 @@ export const App = () => {
 				component = <Single item={single} setSingle={setSingle}/>
 			}
 			break
+		case "/account":
+				component = <Account />
+			break
 	}
-
-	// LOGIN CODE
-	const [inputs, setInputs] = useState({})
-
-    async function handleChange(event){
-      const name = event.target.name;
-      const value = event.target.value;
-	  const fetchusers = await fetch(apiURL + "/items", {
-		method: "GET",
-		headers: { "Content-Type": "application/json" },
-	  })
-	  const allusers = await fetchusers.json();
-	  console.log(allusers)
-	  allusers.map((user) => {
-		if (user.username) {
-			console.log("Username already exists")
-			/*then if password matches name in table then redirect to home*/
-		}
-	  })
-      if (allusers.includes(value) && name == "username") {
-		console.log("Username already exists")
-        /*then if password matches name in table then redirect to home*/
-      } else {
-        setInputs(values => ({...values, [name]: value}))
-      }
-    }
-
-    async function handleSubmit(event){
-      event.preventDefault();
-      try {
-        const {username, password} = inputs
-        const res = await fetch(apiURL + "/users", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            username,
-			password
-          }),
-        });
-        const data = await res.json();
-        if (res.status === 200) {
-			console.log(data)
-          	setInputs(data);
-        } else {
-          alert("Something went wrong");
-        }
-      } catch (error) {
-        console.log(error);
-      }
-      console.log(inputs);
-    }
 
 
 	return (
-		<>
+			<>
 			<NavBar />
-			<main>
-				<h1>Login Page</h1>
-				<Popup trigger={<button> Create</button>} position="right center">
-				<form onSubmit={handleSubmit}>
-						<label>
-						Username:
-						<input 
-						type="text"
-						name="username"
-						value={inputs.username || ""}
-						onChange = {handleChange}/>
-						</label>
-						<label>
-						Password:
-						<input 
-						type="text"
-						name="password"
-						value={inputs.password || ""}
-						onChange = {handleChange}
-						/>
-						</label>
-						<br></br>
-						<button onClick={handleSubmit}>Sign Up</button>
-				</form>
-				</Popup >
-				<br></br>
-				<Popup trigger={<button> Log in </button>} position="left center">
-				<form>
-						<label>
-						Username:
-						<input 
-						type="text"
-						name="username"
-						value={inputs.username || ""}
-						onChange = {handleChange} 
-						/>
-						</label>
-						<label>
-						Password:
-						<input 
-						type="text"
-						name="password"
-						value={inputs.password ||  ""}
-						onChange = {handleChange}
-						/>
-						</label>
-						<br></br>
-						<button>Log in</button>
-				</form>
-				</Popup >
-				{component}
-			</main>
-			
-		</>
-	)
-}
-// {!single ? {component} : <Single item = {single}/>}
+				<main>
+					{component}
+				</main>
+				
+			</>
+		)
+		
+	}
+
 export default App;
 

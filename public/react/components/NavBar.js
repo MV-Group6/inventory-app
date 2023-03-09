@@ -11,6 +11,7 @@ const NavBar = () => {
                 <li><a href="./Womens">Women's Clothing</a></li>
                 <li><a href="./Jewel">Jewelry</a></li>
                 <li><a href="./Electronics">Electronics</a></li>
+                <li><a href="./account">Account</a></li>
             </ul>
         </nav>
     );

@@ -24,7 +24,7 @@ export const Itemdiv = (props) => {
             <h3>{props.item.title}</h3>
           </div>
           <div class="product-price">
-            <h4>{props.item.price}</h4>
+            <h4>£{props.item.price}</h4>
           </div>
           <div class="product-button">
             <button class="view" onClick={fetchReq}>Click to view</button>
