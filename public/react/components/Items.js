@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import apiURL from '../api';
 
-
 export const Itemdiv = (props) => {
   async function fetchReq(){
     try{
@@ -15,12 +14,24 @@ export const Itemdiv = (props) => {
   
   }
   return <>
-    <h3>{props.item.title}</h3>
-    <h4>{props.item.price}</h4>
-    <h4>{props.item.description}</h4>
-    <img src={props.item.image}/>
-    <button onClick={fetchReq}>Click to view</button>
-
+    <main>
+      <div class="product-container">
+        <div class="product-image">
+          <img src={props.item.image}/>
+        </div>
+        <div class="product-details">
+          <div class="product-title">
+            <h3>{props.item.title}</h3>
+          </div>
+          <div class="product-price">
+            <h4>{props.item.price}</h4>
+          </div>
+          <div class="product-button">
+            <button class="view" onClick={fetchReq}>Click to view</button>
+          </div>
+        </div>
+      </div>
+    </main>
   </>
 } 
 	

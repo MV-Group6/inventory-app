@@ -26,19 +26,27 @@ export function Single (props) {
     }
 
     return <>
-        <h1>{props.item.title}</h1>
-        <img src={props.item.image} />
-        <h2>{props.item.description}</h2>
-        <h2>Price : {props.item.price}</h2>
-        <button onClick={() => props.setSingle()}>Back to {props.item.category}</button>
-        <button onClick={handleSubmit}>Delete Item? :|</button>
-        <Popup trigger={<button> Edit an Item </button>} position="right center">
-        <button>Update an item</button>
-        <form >
-        <label>Enter the item you'd like to update:
-        <input type="text"/>
-        </label>
-        </form>
-        </Popup>
+      <div className="product-details">
+        <div className="product-info">
+          <h1 className="product-title">{props.item.title}</h1>
+          <div className="product-image">
+            <img src={props.item.image} />
+          </div>
+          <h2 className="product-description">{props.item.description}</h2>
+          <h2 className="product-price">Price: {props.item.price}</h2>
+          <div className="product-buttons">
+            <button className="back-button" onClick={() => props.setSingle()}>Back to {props.item.category}</button>
+            <button className="delete-button" onClick={handleSubmit}>Delete Item? :|</button>
+            <Popup trigger={<button className="edit-button"> Edit an Item </button>} position="right center">
+              <button>Update an item</button>
+              <form >
+                <label>Enter the item you'd like to update:
+                  <input type="text"/>
+                </label>
+              </form>
+            </Popup>
+          </div>
+        </div>
+      </div>
     </>
 }
