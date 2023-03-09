@@ -1,12 +1,11 @@
 import React from 'react';
 import { Itemdiv } from './Items';
-import { Item } from './Items';
 
-export const ItemsList = ({items}) => {
+export const ItemsList = ({items, setSingle}) => {
 	return <>
 		{
-			items.map((item, idx) => {
-				return <Itemdiv item={item} key={idx} />
+			items.map((item) => {
+				return <Itemdiv item={item} setSingle={setSingle}/>
 			})
 		}
 	</>

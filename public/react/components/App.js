@@ -1,12 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { SaucesList } from './SaucesList';
+import {ItemsList } from './ItemsList';
+import NavBar from './NavBar';
+import '/style.css'
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+
+//Importing pages
+import {Home} from './Home';
+import {Mens} from './Mens';
+import {Womens} from './Womens';
+import {Jewel} from './Jewel';
+import {Electronics} from './Electronics';
+import { Single } from './single';
+
 
 // import and prepend the api url to any fetch calls
 import apiURL from '../api';
+import { Account } from './account';
+
 
 export const App = () => {
-
 	const [items, setItems] = useState([]);
+	const [single, setSingle] = useState();
 
 	async function fetchItems(){
 		try {
@@ -24,35 +39,60 @@ export const App = () => {
 	}, []);
 
 	//Front end dev
-	let component
+	let component = <Home />;
 	switch (window.location.pathname) {
 		case "/Home":
 			component = <Home />
 			break
 		case "/Mens":
-			component = <Mens items={items} />
+			if (!single){
+				component = <Mens items={items} setSingle={setSingle} />
+			}
+			else {
+				component = <Single item={single} setSingle={setSingle}/>
+			}
 			break
 		case "/Womens":
-			component = <Womens items={items}/>
+			if (!single){
+				component = <Womens items={items} setSingle={setSingle}/>
+			}
+			else {
+				component = <Single item={single} setSingle={setSingle}/>
+			}
 			break
 		case "/Jewel":
-			component = <Jewel items={items}/>
+			if (!single){
+				component = <Jewel items={items} setSingle={setSingle}/>
+			}
+			else {
+				component = <Single item={single} setSingle={setSingle}/>
+			}
 			break
 		case "/Electronics":
-			component = <Electronics items={items}/>
+			if (!single){
+				component = <Electronics items={items} setSingle={setSingle}/>
+			}
+			else {
+				component = <Single item={single} setSingle={setSingle}/>
+			}
 			break
-		case "/single":
-			component = <SingleImg items={items}/>
+		case "/account":
+				component = <Account />
+			break
 	}
 
+
 	return (
-		<main>	
-      <h1>Sauce Store</h1>
-			<h2>All things 🔥</h2>
-			<SaucesList sauces={sauces} />
-		</main>
-	)
-}
+			<>
+			<NavBar />
+				<main>
+					{component}
+				</main>
+				
+			</>
+		)
+		
+	}
 
 export default App;
 

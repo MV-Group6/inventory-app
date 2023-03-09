@@ -20,6 +20,7 @@ app.use(express.static(path.join(__dirname, '../dist')));
 
 // api router
 app.use('/api', require('./routes/items'));
+app.use('/api', require('./routes/users'));
 
 // 404 handler
 app.use((req, res) => {
