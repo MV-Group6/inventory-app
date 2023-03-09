@@ -8,6 +8,7 @@ export const Account = () => {
     const [loggedIn, setLoggedIn] = useState(false);
     const [showthecarts, setShowthecarts] = useState(false);
     const [allCarts, setAllCarts] = useState([]);
+    const [allItems, setAllItems] = useState([]);
     // LOGIN CODE
 	  const [inputs, setInputs] = useState({})
 
@@ -103,11 +104,25 @@ export const Account = () => {
       headers: { "Content-Type": "application/json" },
     });
     const allcarts = await fetchcarts.json();
-    const matchingCarts = allcarts.filter((cart) => cart.userID === window.localStorage.getItem("UserID"));
-    const matchingUserIds = matchingCarts.map((cart) => cart.userId);
-    console.log(matchingUserIds);
+
   
-    setAllCarts(matchingUserIds);
+    allcarts.map((cart) => console.log(cart.userID, window.localStorage.getItem("UserID")))
+    const filteredCarts = allcarts.filter(cart => cart.userID=== Number(window.localStorage.getItem("UserID")));
+    setShowthecarts(true);
+    setAllCarts(filteredCarts);
+    console.log(filteredCarts);
+    getCartItems(filteredCarts);
+  }
+  async function getCartItems(allcarts) {
+    const fetchitems = await fetch(apiURL + "/items", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+    const allitems = await fetchitems.json();
+    const itemIds = allcarts.flatMap(cart => cart.itemID);
+    const filtereditems = allitems.filter(item => itemIds.includes(item.id));
+    console.log(filtereditems);
+    setAllItems(filtereditems);
   }
   
   if (window.localStorage.getItem("Username")!= "" && showthecarts == false) {
@@ -121,16 +136,34 @@ export const Account = () => {
     );
   }
   else if (showthecarts){
+    let carttitles = [];
+    let totalprice = 0;
+    for (let i =0; i < allItems.length; i++){
+      carttitles.push("Title:" + allItems[i].title)
+      carttitles.push(" Description: " + allItems[i].description)
+      carttitles.push(" Price: "+allItems[i].price)
+    }
+    let cartprices = [];
+    for (let i =0; i < allItems.length; i++){
+      cartprices.push(" Price "+allItems[i].price)
+      totalprice+=allItems[i].price
+    }
+
     return (
       <div>
         <h1>Welcome, {inputs.username}!</h1>
         <p>You are now logged in.</p>
         <button onClick={showCart}>Show cart</button>
-        {allCarts.map((cart) => (
-        <div key={cart.id}>
-          {/* render each cart item here */}
-        </div>
+        <p>Cart displayed here</p>
+        {carttitles.map((item) => (
+        <>
+        <p key={item.id}>
+          {item}
+        </p>          
+        </>
+        
         ))}
+        <h1>Total price for cart is : £{totalprice}</h1>
         <button onClick={handleLogout}>Log out</button>
       </div>
     );
