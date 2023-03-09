@@ -6,7 +6,7 @@ const NavBar = () => {
     return (
         <nav>
             <label className='logo'>Shop With Us</label>
-            <label>Welcome</label>
+            <label>Welcome {username}</label>
             <ul>
                 <li><a href="./Home">Home</a></li>
                 <li><a href="./Mens">Men's Clothing</a></li>
