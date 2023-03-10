@@ -8,6 +8,7 @@ import 'reactjs-popup/dist/index.css';
 export const Home = () => {
     const [inputs, setInputs] = useState({})
 
+    //Save user input for other functions to use
     const handleChange = (event) => {
       const name = event.target.name;
       const value = event.target.value;
@@ -25,6 +26,7 @@ export const Home = () => {
       }
     }
 
+    //Lets user sublit the created item
     async function handleSubmit(event){
       event.preventDefault();
       try {
@@ -52,6 +54,7 @@ export const Home = () => {
       console.log(inputs);
     }
 
+    //Home display 
   return <>
     <h1>Home</h1>
     <div className="card-container">

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import apiURL from '../api';
 
 export const Itemdiv = (props) => {
+  //Fetch request
   async function fetchReq(){
     try{
       const res = await fetch(apiURL+"/items/"+props.item.id)
@@ -13,6 +14,8 @@ export const Itemdiv = (props) => {
     }
   
   }
+
+  //Items display on the pages
   return <>
     <main>
       <div class="product-container">

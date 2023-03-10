@@ -38,7 +38,7 @@ export const App = () => {
 		fetchItems();
 	}, []);
 
-	//Front end dev
+	//Display of all pages
 	let component = <Home />;
 	switch (window.location.pathname) {
 		case "/Home":

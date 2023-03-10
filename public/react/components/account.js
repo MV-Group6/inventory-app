@@ -10,15 +10,15 @@ export const Account = () => {
     const [allCarts, setAllCarts] = useState([]);
     const [allItems, setAllItems] = useState([]);
     // LOGIN CODE
+
 	  const [inputs, setInputs] = useState({})
-
-
     async function handleChange(event){
       const name = event.target.name;
       const value = event.target.value;
 	  setInputs(values => ({...values, [name]: value}))
     }
 
+    //Submits username and password
     async function handleSubmit(event){
     event.preventDefault();
 	  const fetchusers = await fetch(apiURL + "/users", {
@@ -61,6 +61,8 @@ export const Account = () => {
       }
       console.log(inputs);
     }
+
+    //Handles the login and validates if username and passord are correct
 	async function handleLogin(event){
 		event.preventDefault();
 		console.log("event is working")
@@ -90,6 +92,8 @@ export const Account = () => {
 			}
 		})
 	}
+
+  //Handle Log out when user is logged in
   async function handleLogout(event){
     event.preventDefault();
     console.log("event is working")
@@ -97,6 +101,8 @@ export const Account = () => {
     window.localStorage.setItem("UserID", "")
     window.location.reload(true);
   }
+
+  //Allows user to access the cart items
   async function showCart(event) {
     event.preventDefault();
     console.log("event is working");
@@ -114,6 +120,8 @@ export const Account = () => {
     console.log(filteredCarts);
     getCartItems(filteredCarts);
   }
+
+  //Gets the items for the cart
   async function getCartItems(allcarts) {
     const fetchitems = await fetch(apiURL + "/items", {
       method: "GET",
@@ -150,6 +158,7 @@ export const Account = () => {
       totalprice+=allItems[i].price
     }
 
+    //Account page content display
     return (
       <div>
         <h1>Welcome, {inputs.username}!</h1>

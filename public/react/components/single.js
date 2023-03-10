@@ -14,6 +14,7 @@ export function Single (props) {
   const loggedIn = window.localStorage.getItem("UserID")
   console.log(loggedIn, "login")
 
+  //User input for all functions inside the single page
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -31,6 +32,7 @@ export function Single (props) {
     }
   }
 
+  //Allow user to delete an item
   async function handleSubmit(event) {
     event.preventDefault();
     try {
@@ -49,6 +51,7 @@ export function Single (props) {
     }
   }
 
+  //Allows user to update an item
   async function handleUpdate(event) {
     event.preventDefault();
     try {
@@ -70,6 +73,7 @@ export function Single (props) {
     }
   }
 
+  //Allows user to add items to the cart
   async function handleCart(event){
     event.preventDefault();
     try {
@@ -95,6 +99,8 @@ export function Single (props) {
       console.log(error);
     }
   }
+
+  //Display of the single pages
   return (
     <div className="product-details">
       <div className="product-info">
@@ -114,7 +120,7 @@ export function Single (props) {
           </button>
           <Popup
             trigger={<button className="edit-button">Edit an Item</button>}
-            position="right center"
+            position="center"
           >
             {isEditing ? (
               <form>

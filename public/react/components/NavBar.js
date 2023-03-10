@@ -4,9 +4,13 @@ import { useState } from 'react';
 const NavBar = () => {
     const [username, setUsername] = useState(window.localStorage.getItem("Username"))
     return (
+        //NavBar for all pages
         <nav>
+            <input type="checkbox" id="check"/>
+            <label for="check" className='checkbtn'>
+                <i class="fa fa-bars"></i>
+            </label>
             <label className='logo'>Shop With Us</label>
-            <label className='helloUser'>Welcome {username}</label>
             <ul>
                 <li><a href="./Home">Home</a></li>
                 <li><a href="./Mens">Men's Clothing</a></li>
@@ -15,6 +19,8 @@ const NavBar = () => {
                 <li><a href="./Electronics">Electronics</a></li>
                 <li><a href="./account">Account</a></li>
             </ul>
+            <br></br>
+            <label className='helloUser'>Welcome {username}</label>
         </nav>
     );
 };
