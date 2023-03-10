@@ -39,9 +39,11 @@ export function Single (props) {
       });
       if (res.status === 200) {
         console.log("Deleted!")
+        window.alert("Item has been deleted!")
       } else {
         alert("Something went wrong");
       }
+      window.location.reload(true);
     } catch (error) {
       console.log(error);
     }
@@ -59,6 +61,7 @@ export function Single (props) {
       });
       if (res.status === 200) {
         console.log("Updated!")
+        window.alert("Item has been updated")
       } else {
         alert("Something went wrong");
       }

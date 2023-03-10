@@ -28,7 +28,7 @@ export const Home = () => {
     async function handleSubmit(event){
       event.preventDefault();
       try {
-        const {title, description, category, price} = inputs
+        const {title, description, category, price, image} = inputs
         const res = await fetch(apiURL + "/items", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -36,7 +36,8 @@ export const Home = () => {
             title,
             description,
             category,
-            price
+            price, 
+            image
           }),
         });
         const data = await res.json();
