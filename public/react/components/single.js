@@ -84,6 +84,7 @@ export function Single (props) {
       const data = await res.json();
       if (res.status === 200) {
         console.log(data)
+        window.alert("Item has been added to cart");
       } else {
         alert("Something went wrong");
       }

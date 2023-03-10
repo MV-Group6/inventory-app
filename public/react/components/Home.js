@@ -75,8 +75,8 @@ export const Home = () => {
         <a href="./Electronics">Shop Now</a>
       </div>
     </div>
-    <Popup trigger={<button> Create an Item </button>} position="right center">
-      <div>
+    <Popup trigger={<button> Create an Item </button>} position="center" width={500}>
+      <div style={{ width: '100%' }}>
         <form>
           <label>Enter a Product Title you'd like to add:
             <input 
