@@ -79,6 +79,7 @@ export const Account = () => {
 					setLoggedIn(true);
           window.localStorage.setItem("UserID", user.id)
           window.localStorage.setItem("Username", user.username)
+          window.location.reload(true)
 				}
 				else {
 					console.log("The password is incorrect!")
@@ -158,9 +159,9 @@ export const Account = () => {
         <section className='cart'>
           {carttitles.map((item) => (
           <>
-          <p key={item.id}>
+          <p key={item.title}>
             {item}
-          </p>          
+          </p>             
           </>
           ))}
         </section>
